@@ -1,0 +1,85 @@
+<!-- Write Code on its own Don't copy from anyone -->
+
+<!-- Plan
+ DepartmentID,  DepartmentName, MGR-->
+
+
+<fieldset>
+  <legend>Department Form</legend>
+  <!-- code is correct -->
+  <form #dept="ngForm" (ngSubmit)="onSubmit(dept)">
+    <div class="form-group">
+      <label for="deptName">Department name : </label>
+      <input type="text" id="deptName" name="deptName" [(ngModel)]="department.departmentname" pattern="[A-Za-z]+"
+        required />
+    </div>
+
+
+    <!-- code is correct --->
+    <div class="form-group">
+      <label for="mgr">MGR : </label>
+      <select type="number" id="mgr" [(ngModel)]="department.mgr.id" name="mgr" required>
+        <option value="">Select Employee ID</option>
+        <option *ngFor=" let e of employeeList" [value]="e.id">{{ e.fname }}</option>
+      </select>
+    </div>
+
+
+    <!-- code is correct
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && department.invalid }">
+      <label for="department">Department:</label>
+      <select id="department" name="department" #department="ngModel" [(ngModel)]="employee.department.departmentid"
+        required>
+        <option value="">Select Department</option>
+        <option *ngFor=" let d of departmentList" [value]="d.departmentid">{{ d.departmentname }}</option>
+      </select>
+    </div> -->
+
+
+
+
+
+
+    <div class="form-actions">
+      <button id="submit-btn" type="submit">Submit</button>
+      <button id="reset-btn" type="button" (click)="onReset(dept)">Reset</button>
+    </div>
+  </form>
+</fieldset>
+
+
+<p-table #dt1 [value]="departmentList" showGridlines="true" [paginator]="true" [rows]="5"
+  [tableStyle]="{'width':'100%'}">
+
+  <ng-template pTemplate="caption">
+    <div class="table-caption">
+      <h2 class="table-title">Department Data</h2>
+      <div class="search-container">
+        <i class="pi pi-search search-icon"></i>
+        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword" />
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Department ID</th>
+      <th>Department Name</th>
+      <th>MGR ID</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-dept let-i="rowIndex">
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ dept.departmentname }}</td>
+      <td>{{ dept.mgr?.id}}</td>
+      <td>
+        <button id="delete-btn" type="button" (click)="onDelete(dept.departmentid)">Delete</button>
+        <button id="edit-btn" type="button" (click)="onEdit(dept)">Edit</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

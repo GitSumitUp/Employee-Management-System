@@ -1,0 +1,133 @@
+<fieldset>
+  <legend>Employee Registration</legend>
+  <form #empForm="ngForm" (ngSubmit)="onSubmit(empForm)">
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && fname.invalid }">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" [(ngModel)]="employee.fname" #fname="ngModel" required
+        pattern="[A-Za-z]+" />
+      <div class="error" *ngIf="submitted && fname.invalid">
+        <small *ngIf="fname.errors?.['required']">First name is required.</small>
+        <small *ngIf="fname.errors?.['pattern']">Only letters are allowed.</small>
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && lname.invalid }">
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname" [(ngModel)]="employee.lname" #lname="ngModel" required
+        pattern="[A-Za-z]+" />
+      <div class="error" *ngIf="submitted && lname.invalid">
+        <small *ngIf="lname.errors?.['required']">Last name is required.</small>
+        <small *ngIf="lname.errors?.['pattern']">Only letters are allowed.</small>
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && password.invalid }">
+      <label for="password">Password:</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" [(ngModel)]="employee.password" #password="ngModel"
+          required pattern=".{6,}" />
+        <i class="fa fa-eye"></i>
+      </div>
+      <div class="error" *ngIf="submitted && password.invalid">
+        <small *ngIf="password.errors?.['required']">Password is required.</small>
+        <small *ngIf="password.errors?.['pattern']">Password must be at least 6 characters long.</small>
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && email.invalid }">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="employee.email" #email="ngModel" required />
+      <div class="error" *ngIf="submitted && email.invalid">
+        <small *ngIf="email.errors?.['required']">Email is required.</small>
+        <small *ngIf="email.errors?.['email']">Invalid email format.</small>
+      </div>
+    </div>
+
+
+    <!-- code is correct -->
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && department.invalid }">
+      <label for="department">Department:</label>
+      <select id="department" name="department" #department="ngModel" [(ngModel)]="employee.department.departmentid"
+        required>
+        <option value="">Select Department</option>
+        <option *ngFor=" let d of departmentList" [value]="d.departmentid">{{ d.departmentname }}</option>
+      </select>
+      <div class="error" *ngIf="submitted && department.invalid">
+        <small>Department is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="doj">Date of Joining:</label>
+      <input type="date" id="doj" name="doj" [(ngModel)]="employee.doj" />
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': submitted && gender.invalid }">
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" [(ngModel)]="employee.gender" #gender="ngModel" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div class="error" *ngIf="submitted && gender.invalid">
+        <small>Gender is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; flex-direction: row;">
+      <input type="checkbox" id="isActive" [(ngModel)]="employee.active" name="isActive" />
+      <label for="isActive" class="inline-label">Active</label>
+    </div>
+
+    <div class="form-actions">
+      <button id="submit-btn" type="submit">Submit</button>
+      <button id="reset-btn" type="button" (click)="onReset(empForm)">Reset</button>
+    </div>
+  </form>
+</fieldset>
+
+
+<p-table #dt1 [value]="employeeList" showGridlines="true" [paginator]="true" [rows]="5" [tableStyle]="{'width':'100%'}">
+
+  <ng-template pTemplate="caption">
+    <div class="table-caption">
+      <h2 class="table-title">Registered Employees</h2>
+      <div class="search-container">
+        <i class="pi pi-search search-icon"></i>
+        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword" />
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Date of Joining</th>
+      <th>Gender</th>
+      <th>Active</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-emp let-i="rowIndex">
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ emp.fname }}</td>
+      <td>{{ emp.lname }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.department?.departmentid }}</td>
+      <td>{{ emp.doj | date }}</td>
+      <td>{{ emp.gender }}</td>
+      <td>{{ emp.active ? 'Yes' : 'No' }}</td>
+      <td>
+        <button id="delete-btn" type="button" (click)="onDelete(emp.id)">Delete</button>
+        <button id="edit-btn" type="button" (click)="onEdit(emp)">Edit</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

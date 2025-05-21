@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.p-datatable {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-top: 50px;
+}
+
+.p-datatable thead th {
+  background-color: #007BFF;
+  color: white;
+}
+
+.p-datatable tbody td {
+  padding: 10px;
+}

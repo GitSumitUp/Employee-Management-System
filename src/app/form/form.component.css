@@ -1,0 +1,263 @@
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+fieldset {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  padding-bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+form {
+  position: relative;
+  min-height: 300px; 
+  padding-bottom: 60px; 
+}
+
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+#submit-btn, #reset-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+#submit-btn {
+    background-color: #007BFF;
+    left: 300px;
+   color: white;
+}
+
+#submit-btn:hover {
+   background-color: #0056b3;
+}
+
+
+#reset-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+#reset-btn:hover {
+  background-color: #d32f2f;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 2px;
+}
+
+.has-error input,
+.has-error select {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 2.5rem;
+}
+
+.password-wrapper i {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group label {
+  margin: 0;
+  font-weight: 500;
+}
+
+.inline-label {
+    margin-left: 5px;
+}
+
+/* Table Styling  */
+::ng-deep .p-datatable thead th {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center; 
+} 
+
+::ng-deep .p-datatable tbody td {
+  padding: 10px;
+ /* border-bottom: 1px solid #ddd;  */
+  text-align: center;
+}
+
+/* p-table styling */
+::ng-deep .p-datatable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+::ng-deep .p-datatable tbody tr:hover {
+  background-color: #e6f0ff;
+} 
+
+/* Pagination Styling */
+::ng-deep .p-paginator {
+  justify-content: center ;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+}
+
+::ng-deep .p-paginator-page {
+  border: 1px solid #ccc;
+  color: #505254;
+  margin: 0 4px;
+  border-radius: 15px;
+  padding: 6px 10px;
+}
+::ng-deep .p-paginator-page:hover {
+  background-color: #b9b4b4;
+  color: rgb(6, 6, 5);
+}
+
+::ng-deep .p-paginator-rpp-options {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #495057;
+  cursor: pointer;
+  margin-left: 1em;
+}
+
+/* Caption and Search */
+.table-caption {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.table-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+}
+
+.search-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-container input {
+  width: 180px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  color: #007bff;
+}   
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+} 
+
+
+#delete-btn, #edit-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+#delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+#delete-btn:hover {
+     background-color: #d32f2f;
+}
+
+
+#edit-btn {
+   background-color: rgb(42, 214, 42);;
+   color: white;
+}
+
+#edit-btn:hover {
+  background-color: #157b2d;
+}
